@@ -93,6 +93,7 @@ func SetKey(key string) {
 	apikey = key
 }
 
+// TODO: Return more details here for each updated: groupid, artifactid, current version, uptodate version
 func GetAvailableUpdates(artifactId string) bool {
 	veye := lookupProject(artifactId)
 	if veye.OutdatedCountSum > 0 {
@@ -112,24 +113,6 @@ func lookupProject(artifactId string) *VersionEyeProject {
 	return new(VersionEyeProject)
 }
 
-type SecurityVulnerability struct {
-	Language           string `json:"language"`
-	ProdKey            string `json:"prod_key"`
-	NameId             string `json:"name_id"`
-	Author             string `json:"author"`
-	Summary            string `json:"summary"`
-	Description        string `json:"description"`
-	Platform           string `json:"platform"`
-	OSVDB              string `json:"osvdb"`
-	CVE                string `json:"cve"`
-	CVSS               string `json:"cvss_v2"`
-	PublishDate        string `json:"publish_date"`
-	Framework          string `json:"framework"`
-	AffectedVersions   string `json:"affected_versions_string"`
-	PatchedVersions    string `json:"patched_versions_string"`
-	UnaffectedVersions string `json:"unaffected_versions_string"`
-	//Links string `json:"links"`
-}
 
 func getAllProjectsFromVersionEye() VersionEyeProjects {
 	checkApiKey()
