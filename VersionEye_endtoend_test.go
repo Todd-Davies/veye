@@ -1,4 +1,4 @@
-// +build integration
+// +build endtoend
 
 package veye
 
@@ -8,7 +8,6 @@ import (
 )
 
 var key = "c78c87ec4d8f647d818c"
-var testProjectId = "56a00afa2c2fab00290002ae"
 
 func TestGetAllProjectsFromVersionEye(t *testing.T) {
 	SetKey(key)
@@ -18,6 +17,7 @@ func TestGetAllProjectsFromVersionEye(t *testing.T) {
 
 func TestGetProjectDetails(t *testing.T) {
 	SetKey(key)
-	veProject := getProjectDetailsFromVersionEye(testProjectId)
-	assert.Equal(t, testProjectId, veProject.Id)
+	testProjectID := getAllProjectsFromVersionEye()[0].Id
+	veProject := getProjectDetailsFromVersionEye(testProjectID)
+	assert.Equal(t, testProjectID, veProject.Id)
 }

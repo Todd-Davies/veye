@@ -113,7 +113,6 @@ func lookupProject(artifactId string) *VersionEyeProject {
 	return new(VersionEyeProject)
 }
 
-
 func getAllProjectsFromVersionEye() VersionEyeProjects {
 	checkApiKey()
 	resp, err := http.Get("https://www.versioneye.com/api/v2/projects?api_key=" + apikey)
